@@ -4,6 +4,7 @@ import com.automation.config.DriverFactory;
 import com.automation.server.ServerManager;
 import com.automation.utils.PropertyUtils;
 import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.MobileElement;
 import io.appium.java_client.remote.AndroidMobileCapabilityType;
 import io.appium.java_client.remote.MobileCapabilityType;
 import io.appium.java_client.remote.MobilePlatform;
@@ -25,7 +26,7 @@ public class BaseTest {
     private final String appPath = props.getProperty("APP_PATH");
     private final String appActivity = props.getProperty("APP_ACTIVITY");
     private final String appPackage = props.getProperty("APP_PACKAGE");
-    private AppiumDriver driver;
+    private AppiumDriver<MobileElement> driver;
 
     @BeforeSuite
     public void startAppiumServer() throws IOException, InterruptedException {

@@ -13,7 +13,7 @@ public enum DriverManager implements DriverOptions {
 
     ANDROID {
         @Override
-        public AppiumDriver getDriverOptions(URL url, DesiredCapabilities desiredCapabilities) {
+        public AppiumDriver<MobileElement> getDriverOptions(URL url, DesiredCapabilities desiredCapabilities) {
             desiredCapabilities.setCapability(MobileCapabilityType.PLATFORM_NAME, MobilePlatform.ANDROID);
             desiredCapabilities.setCapability(MobileCapabilityType.PLATFORM_VERSION, "11");
             desiredCapabilities.setCapability(MobileCapabilityType.AUTOMATION_NAME, AutomationName.ANDROID_UIAUTOMATOR2);
@@ -22,20 +22,20 @@ public enum DriverManager implements DriverOptions {
             desiredCapabilities.setCapability(AndroidMobileCapabilityType.ANDROID_INSTALL_PATH, "/data/local/tmp");
             desiredCapabilities.setCapability(AndroidMobileCapabilityType.ANDROID_INSTALL_TIMEOUT, 100000);
 
-            return new AndroidDriver<MobileElement>(url, desiredCapabilities);
+            return new AndroidDriver<>(url, desiredCapabilities);
         }
     },
 
     IOS {
         @Override
-        public AppiumDriver getDriverOptions(URL url, DesiredCapabilities desiredCapabilities) {
+        public AppiumDriver<MobileElement> getDriverOptions(URL url, DesiredCapabilities desiredCapabilities) {
             desiredCapabilities.setCapability(MobileCapabilityType.PLATFORM_NAME, MobilePlatform.IOS);
             desiredCapabilities.setCapability(MobileCapabilityType.PLATFORM_VERSION, "13");
             desiredCapabilities.setCapability(MobileCapabilityType.AUTOMATION_NAME, AutomationName.IOS_XCUI_TEST);
             desiredCapabilities.setCapability(IOSMobileCapabilityType.LOCATION_SERVICES_ENABLED, true);
             desiredCapabilities.setCapability(IOSMobileCapabilityType.AUTO_ACCEPT_ALERTS, true);
 
-            return new IOSDriver<MobileElement>(url, desiredCapabilities);
+            return new IOSDriver<>(url, desiredCapabilities);
         }
     };
 
