@@ -1,11 +1,12 @@
 package com.automation;
 
-import com.automation.config.AppiumDriverManager;
-import com.automation.utils.PropertiesManager;
-import com.automation.utils.ServerManager;
+import com.automation.config.DriverFactory;
+import com.automation.server.ServerManager;
+import com.automation.utils.PropertyUtils;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.remote.AndroidMobileCapabilityType;
 import io.appium.java_client.remote.MobileCapabilityType;
+import io.appium.java_client.remote.MobilePlatform;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
@@ -18,13 +19,13 @@ import java.util.Properties;
 
 public class BaseTest {
 
-    private AppiumDriver driver;
-    private final Properties props = PropertiesManager.readPropertiesFile("src/test/resources/config.properties");
+    private final Properties props = PropertyUtils.readPropertiesFile("src/test/resources/config.properties");
     private final String deviceName = props.getProperty("DEVICE_NAME");
     private final String deviceId = props.getProperty("DEVICE_ID");
     private final String appPath = props.getProperty("APP_PATH");
     private final String appActivity = props.getProperty("APP_ACTIVITY");
     private final String appPackage = props.getProperty("APP_PACKAGE");
+    private AppiumDriver driver;
 
     @BeforeSuite
     public void startAppiumServer() throws IOException, InterruptedException {
@@ -43,7 +44,7 @@ public class BaseTest {
         capabilities.setCapability(AndroidMobileCapabilityType.APP_PACKAGE, appPackage);
 
         if (driver == null) {
-            driver = AppiumDriverManager.ANDROID.getDriverOptions(ServerManager.getServerAddress(), capabilities);
+            driver = DriverFactory.getMobileDriver(MobilePlatform.ANDROID, ServerManager.getServerAddress(), capabilities);
             driver.installApp(appPath);
         }
     }
