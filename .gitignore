@@ -1,0 +1,11 @@
+### Intellij+iml Patch ###
+.idea
+modules.xml
+.idea/misc.xml
+*.iml
+*.ipr
+
+### Maven ###
+target/
+
+.DS_Store
