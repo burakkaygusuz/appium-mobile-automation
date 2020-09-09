@@ -8,9 +8,9 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Properties;
 
-public class PropertiesManager {
+public class PropertyUtils {
 
-    private static final Logger log = LoggerFactory.getLogger(PropertiesManager.class);
+    private static final Logger log = LoggerFactory.getLogger(PropertyUtils.class);
     private static final Properties properties = new Properties();
 
     public static Properties readPropertiesFile(String fileName) {

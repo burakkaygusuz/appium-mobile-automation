@@ -4,7 +4,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-public class PathManager {
+public class PathUtils {
 
     private static final String operatingSystem = System.getProperty("os.name");
     private static String jsPaths = null;

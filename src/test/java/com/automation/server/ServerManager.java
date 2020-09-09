@@ -1,4 +1,4 @@
-package com.automation.utils;
+package com.automation.server;
 
 import io.appium.java_client.service.local.AppiumDriverLocalService;
 import io.appium.java_client.service.local.AppiumServiceBuilder;
@@ -9,8 +9,8 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.HashMap;
 
-import static com.automation.utils.PathManager.getJSPath;
-import static com.automation.utils.PathManager.getNodePath;
+import static com.automation.utils.PathUtils.getJSPath;
+import static com.automation.utils.PathUtils.getNodePath;
 
 public class ServerManager {
 

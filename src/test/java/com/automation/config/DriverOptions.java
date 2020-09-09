@@ -5,6 +5,6 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 
 import java.net.URL;
 
-public interface AppiumDriverOptions {
+public interface DriverOptions {
     AppiumDriver getDriverOptions(URL url, DesiredCapabilities desiredCapabilities);
 }

@@ -9,7 +9,7 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 
 import java.net.URL;
 
-public enum AppiumDriverManager implements AppiumDriverOptions {
+public enum DriverManager implements DriverOptions {
 
     ANDROID {
         @Override
