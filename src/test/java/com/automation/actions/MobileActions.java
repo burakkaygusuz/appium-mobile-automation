@@ -16,15 +16,15 @@ public class MobileActions {
     }
 
     public TouchAction tapByCoordinates(int x, int y) {
-       return getTapAction(driver,x,y,250);
+        return getTapAction(driver, x, y, 250);
     }
 
     public TouchAction pressByElement(MobileElement element, long seconds) {
-        return getPressAction(driver,element,seconds);
+        return getPressAction(driver, element, seconds);
     }
 
     public TouchAction pressByCoordinates(int x, int y, long seconds) {
-       return getPressAction(driver,x,y,seconds);
+        return getPressAction(driver, x, y, seconds);
     }
 
     public TouchAction horizontalSwipeByPercentage(double startPercentage, double endPercentage, double anchorPercentage) {
@@ -32,7 +32,7 @@ public class MobileActions {
         int startPoint = getPoint(startPercentage);
         int endPoint = getPoint(endPercentage);
 
-       return getSwipeAction(driver,anchor,startPoint,endPoint,1000);
+        return getSwipeAction(driver, anchor, startPoint, endPoint, 1000);
     }
 
     public TouchAction verticalSwipeByPercentages(double startPercentage, double endPercentage, double anchorPercentage) {
@@ -40,7 +40,7 @@ public class MobileActions {
         int startPoint = getPoint(startPercentage);
         int endPoint = getPoint(endPercentage);
 
-       return getSwipeAction(driver,anchor,startPoint,endPoint,1000);
+        return getSwipeAction(driver, anchor, startPoint, endPoint, 1000);
     }
 
     public TouchAction swipeByElements(MobileElement startElement, MobileElement endElement) {
@@ -50,6 +50,6 @@ public class MobileActions {
         int endX = getXPoint(endElement);
         int endY = getYPoint(endElement);
 
-      return getSwipeAction(driver,startX,startY,endX,endY,1000);
+        return getSwipeAction(driver, startX, startY, endX, endY, 1000);
     }
 }

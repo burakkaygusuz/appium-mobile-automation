@@ -17,11 +17,11 @@ public class PointUtils {
         return (int) (size.width * percentage);
     }
 
-    public static int getXPoint(MobileElement element){
-        return element.getLocation().getX() + (element.getSize().getWidth() /2);
+    public static int getXPoint(MobileElement element) {
+        return element.getLocation().getX() + (element.getSize().getWidth() / 2);
     }
 
-    public static int getYPoint(MobileElement element){
-        return element.getLocation().getY() + (element.getSize().getHeight() /2);
+    public static int getYPoint(MobileElement element) {
+        return element.getLocation().getY() + (element.getSize().getHeight() / 2);
     }
 }
