@@ -20,13 +20,15 @@ import java.util.Properties;
 
 public class BaseTest {
 
+    public AppiumDriver<MobileElement> driver;
     private final Properties props = PropertyUtils.readPropertiesFile("src/test/resources/config.properties");
+
+    //Capabilities
     private final String deviceName = props.getProperty("DEVICE_NAME");
     private final String deviceId = props.getProperty("DEVICE_ID");
     private final String appPath = props.getProperty("APP_PATH");
     private final String appActivity = props.getProperty("APP_ACTIVITY");
     private final String appPackage = props.getProperty("APP_PACKAGE");
-    private AppiumDriver<MobileElement> driver;
 
     @BeforeSuite
     public void startAppiumServer() throws IOException, InterruptedException {
