@@ -43,6 +43,7 @@ public class PathUtils {
 
             while ((jsPaths = bufferedReader.readLine()) != null) {
                 actualJSPath = jsPaths.replace("appium", "node_modules\\appium\\build\\lib\\main.js");
+                break;
             }
             process.waitFor();
             process.destroy();
