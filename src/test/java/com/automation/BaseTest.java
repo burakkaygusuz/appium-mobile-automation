@@ -34,10 +34,8 @@ public class BaseTest {
 
     @BeforeClass
     public void startSession() {
-        if (driver == null) {
-            driver = DriverFactory.getMobileDriver(MobilePlatform.ANDROID, ServerManager.getServerAddress(), capabilities);
-            driver.installApp(props.getProperty("ANDROID_APP_PATH"));
-        }
+        if (driver == null)
+            driver = DriverFactory.getMobileDriver(ANDROID, ServerManager.getServerAddress(), capabilities);
     }
 
     @AfterClass
