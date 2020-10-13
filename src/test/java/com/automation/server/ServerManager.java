@@ -27,7 +27,7 @@ public class ServerManager {
 
         HashMap<String, String> environment = new HashMap<>();
         environment.put("PATH", "/usr/local/bin:" + System.getenv("PATH")); //Path to carthage
-        environment.put("ANDROID_HOME", System.getenv("HOME") + "/Library/Android/sdk"); //Path to Android SDK //TODO: Find a way to the Android SDK dynamic path
+        environment.put("ANDROID_HOME", System.getenv("ANDROID_HOME")); //Path to Android SDK
         environment.put("JAVA_HOME", System.getProperty("java.home")); // Path to JAVA_HOME
 
         serviceBuilder.withEnvironment(environment);
