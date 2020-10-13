@@ -46,8 +46,8 @@ public enum DriverManager implements DriverOptions {
             desiredCapabilities.setCapability(MobileCapabilityType.PLATFORM_VERSION, "13");
             desiredCapabilities.setCapability(MobileCapabilityType.AUTOMATION_NAME, AutomationName.IOS_XCUI_TEST);
             desiredCapabilities.setCapability(MobileCapabilityType.DEVICE_NAME, props.getProperty("IOS_DEVICE_NAME"));
-            desiredCapabilities.setCapability(MobileCapabilityType.UDID, "IOS_DEVICE_ID");
-            desiredCapabilities.setCapability(MobileCapabilityType.APP, "IOS_APP_PATH");
+            desiredCapabilities.setCapability(MobileCapabilityType.UDID, props.getProperty("IOS_DEVICE_ID"));
+            desiredCapabilities.setCapability(MobileCapabilityType.APP, props.getProperty("IOS_APP_PATH"));
             desiredCapabilities.setCapability(IOSMobileCapabilityType.BUNDLE_ID, props.getProperty("BUNDLE_ID"));
             desiredCapabilities.setCapability(IOSMobileCapabilityType.LOCATION_SERVICES_ENABLED, true);
             desiredCapabilities.setCapability(IOSMobileCapabilityType.AUTO_ACCEPT_ALERTS, true);
