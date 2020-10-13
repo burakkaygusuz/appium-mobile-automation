@@ -45,7 +45,7 @@ public class ServerManager {
         service.stop();
     }
 
-    public static boolean isServiceRunning(){
+    public static boolean isServiceRunning() {
         return service.isRunning();
     }
 }
