@@ -6,6 +6,13 @@ modules.xml
 *.ipr
 
 ### Maven ###
-target/
+target
+bin
+
+### VSCode ###
+.vscode
+.settings
+.classpath
+.project
 
 .DS_Store
