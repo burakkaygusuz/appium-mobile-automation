@@ -8,16 +8,15 @@ import io.appium.java_client.ios.IOSDriver;
 import io.appium.java_client.remote.*;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
+import java.io.File;
 import java.net.URL;
 import java.util.Properties;
 
-public enum DriverManager implements DriverOptions {
+public enum DriverType implements DriverOptions {
 
     ANDROID {
         @Override
         public AppiumDriver<MobileElement> getDriverOptions(URL url, DesiredCapabilities desiredCapabilities) {
-
-            final Properties props = PropertyUtils.readPropertiesFile("src/test/resources/config.properties");
 
             desiredCapabilities.setCapability(MobileCapabilityType.PLATFORM_NAME, MobilePlatform.ANDROID);
             desiredCapabilities.setCapability(MobileCapabilityType.PLATFORM_VERSION, "10");
@@ -43,8 +42,6 @@ public enum DriverManager implements DriverOptions {
         @Override
         public AppiumDriver<MobileElement> getDriverOptions(URL url, DesiredCapabilities desiredCapabilities) {
 
-            final Properties props = PropertyUtils.readPropertiesFile("src/test/resources/config.properties");
-
             desiredCapabilities.setCapability(MobileCapabilityType.PLATFORM_NAME, MobilePlatform.IOS);
             desiredCapabilities.setCapability(MobileCapabilityType.PLATFORM_VERSION, "13");
             desiredCapabilities.setCapability(MobileCapabilityType.AUTOMATION_NAME, AutomationName.IOS_XCUI_TEST);
@@ -59,6 +56,8 @@ public enum DriverManager implements DriverOptions {
             return new IOSDriver<>(url, desiredCapabilities);
         }
     };
+
+    protected final Properties props = PropertyUtils.readPropertiesFile("src/test/resources/config.properties");
 
     @Override
     public String toString() {
