@@ -20,7 +20,7 @@ public enum DriverManager implements DriverOptions {
             final Properties props = PropertyUtils.readPropertiesFile("src/test/resources/config.properties");
 
             desiredCapabilities.setCapability(MobileCapabilityType.PLATFORM_NAME, MobilePlatform.ANDROID);
-            desiredCapabilities.setCapability(MobileCapabilityType.PLATFORM_VERSION, "11");
+            desiredCapabilities.setCapability(MobileCapabilityType.PLATFORM_VERSION, "10");
             desiredCapabilities.setCapability(MobileCapabilityType.AUTOMATION_NAME, AutomationName.ANDROID_UIAUTOMATOR2);
             desiredCapabilities.setCapability(MobileCapabilityType.DEVICE_NAME, props.getProperty("ANDROID_DEVICE_NAME"));
             desiredCapabilities.setCapability(MobileCapabilityType.UDID, props.getProperty("ANDROID_DEVICE_ID"));
