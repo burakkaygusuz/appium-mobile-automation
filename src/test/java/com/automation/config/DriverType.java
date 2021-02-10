@@ -24,8 +24,8 @@ public enum DriverManager implements DriverOptions {
             desiredCapabilities.setCapability(MobileCapabilityType.AUTOMATION_NAME, AutomationName.ANDROID_UIAUTOMATOR2);
             desiredCapabilities.setCapability(MobileCapabilityType.DEVICE_NAME, props.getProperty("ANDROID_DEVICE_NAME"));
             desiredCapabilities.setCapability(MobileCapabilityType.UDID, props.getProperty("ANDROID_DEVICE_ID"));
-            desiredCapabilities.setCapability(MobileCapabilityType.APP, props.getProperty("ANDROID_APP_PATH"));
-            desiredCapabilities.setCapability(MobileCapabilityType.NO_RESET,false);
+            desiredCapabilities.setCapability(MobileCapabilityType.APP, new File(props.getProperty("ANDROID_APP_PATH")).getAbsolutePath());
+            desiredCapabilities.setCapability(MobileCapabilityType.NO_RESET, false);
             desiredCapabilities.setCapability(AndroidMobileCapabilityType.IS_HEADLESS, true);
             desiredCapabilities.setCapability(AndroidMobileCapabilityType.AVD, props.getProperty("AVD_DEVICE_NAME"));
             desiredCapabilities.setCapability(AndroidMobileCapabilityType.SKIP_UNLOCK, true);
@@ -50,8 +50,8 @@ public enum DriverManager implements DriverOptions {
             desiredCapabilities.setCapability(MobileCapabilityType.AUTOMATION_NAME, AutomationName.IOS_XCUI_TEST);
             desiredCapabilities.setCapability(MobileCapabilityType.DEVICE_NAME, props.getProperty("IOS_DEVICE_NAME"));
             desiredCapabilities.setCapability(MobileCapabilityType.UDID, props.getProperty("IOS_DEVICE_ID"));
-            desiredCapabilities.setCapability(MobileCapabilityType.APP, props.getProperty("IOS_APP_PATH"));
-            desiredCapabilities.setCapability(MobileCapabilityType.NO_RESET,false);
+            desiredCapabilities.setCapability(MobileCapabilityType.APP, new File(props.getProperty("IOS_APP_PATH")).getAbsolutePath());
+            desiredCapabilities.setCapability(MobileCapabilityType.NO_RESET, false);
             desiredCapabilities.setCapability(IOSMobileCapabilityType.BUNDLE_ID, props.getProperty("BUNDLE_ID"));
             desiredCapabilities.setCapability(IOSMobileCapabilityType.LOCATION_SERVICES_ENABLED, true);
             desiredCapabilities.setCapability(IOSMobileCapabilityType.AUTO_ACCEPT_ALERTS, true);
