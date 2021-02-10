@@ -2,28 +2,30 @@ package com.automation.config;
 
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
-import io.appium.java_client.remote.MobilePlatform;
-import org.apache.commons.lang3.StringUtils;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
 import java.net.URL;
+
+import static com.automation.config.DriverType.ANDROID;
+import static com.automation.config.DriverType.IOS;
 
 public class DriverFactory {
 
     private static AppiumDriver<MobileElement> driver;
 
-    public static AppiumDriver<MobileElement> getMobileDriver(String platformName, URL url, DesiredCapabilities capabilities) {
+    public static AppiumDriver<MobileElement> getMobileDriver(DriverType driverType, URL url, DesiredCapabilities capabilities) {
 
         if (driver == null) {
-            switch (StringUtils.capitalize(platformName)) {
-                case MobilePlatform.ANDROID:
-                    driver = DriverManager.ANDROID.getDriverOptions(url, capabilities);
+
+            switch (driverType) {
+                case ANDROID:
+                    driver = ANDROID.getDriverOptions(url, capabilities);
                     break;
-                case MobilePlatform.IOS:
-                    driver = DriverManager.IOS.getDriverOptions(url, capabilities);
+                case IOS:
+                    driver = IOS.getDriverOptions(url, capabilities);
                     break;
                 default:
-                    throw new IllegalArgumentException("Undefined OS");
+                    throw new IllegalArgumentException(String.format("An unexpected driver has been attempted to init: \n %s", driverType.toString()));
             }
         }
         return driver;

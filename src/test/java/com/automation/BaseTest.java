@@ -1,6 +1,7 @@
 package com.automation;
 
 import com.automation.config.DriverFactory;
+import com.automation.config.DriverType;
 import com.automation.server.ServerManager;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
@@ -14,8 +15,6 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeSuite;
 
 import java.io.IOException;
-
-import static io.appium.java_client.remote.MobilePlatform.ANDROID;
 
 public class BaseTest {
 
@@ -33,7 +32,7 @@ public class BaseTest {
     @BeforeClass
     public void startSession() {
         if (driver == null)
-            driver = DriverFactory.getMobileDriver(ANDROID, ServerManager.getServerAddress(), capabilities);
+            driver = DriverFactory.getMobileDriver(DriverType.ANDROID, ServerManager.getServerAddress(), capabilities);
     }
 
     @AfterClass
