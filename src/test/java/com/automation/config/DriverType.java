@@ -26,6 +26,8 @@ public enum DriverManager implements DriverOptions {
             desiredCapabilities.setCapability(MobileCapabilityType.UDID, props.getProperty("ANDROID_DEVICE_ID"));
             desiredCapabilities.setCapability(MobileCapabilityType.APP, props.getProperty("ANDROID_APP_PATH"));
             desiredCapabilities.setCapability(MobileCapabilityType.NO_RESET,false);
+            desiredCapabilities.setCapability(AndroidMobileCapabilityType.IS_HEADLESS, true);
+            desiredCapabilities.setCapability(AndroidMobileCapabilityType.AVD, props.getProperty("AVD_DEVICE_NAME"));
             desiredCapabilities.setCapability(AndroidMobileCapabilityType.SKIP_UNLOCK, true);
             desiredCapabilities.setCapability(AndroidMobileCapabilityType.AUTO_GRANT_PERMISSIONS, true);
             desiredCapabilities.setCapability(AndroidMobileCapabilityType.ANDROID_INSTALL_PATH, "/data/local/tmp");
