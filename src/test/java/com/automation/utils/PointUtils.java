@@ -12,16 +12,16 @@ public class PointUtils {
         PointUtils.driver = driver;
     }
 
-    public static int getPoint(double percentage) {
+    public int getPoint(double percentage) {
         Dimension size = driver.manage().window().getSize();
         return (int) (size.width * percentage);
     }
 
-    public static int getXPoint(MobileElement element) {
+    public int getXPoint(MobileElement element) {
         return element.getLocation().getX() + (element.getSize().getWidth() / 2);
     }
 
-    public static int getYPoint(MobileElement element) {
+    public int getYPoint(MobileElement element) {
         return element.getLocation().getY() + (element.getSize().getHeight() / 2);
     }
 }

@@ -1,18 +1,21 @@
 package com.automation.actions;
 
+import com.automation.utils.PointUtils;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.TouchAction;
 
 import static com.automation.utils.ActionUtils.*;
-import static com.automation.utils.PointUtils.*;
 
+@SuppressWarnings("rawtypes")
 public class MobileActions {
 
     private final AppiumDriver<MobileElement> driver;
+    private final PointUtils pointUtils;
 
     public MobileActions(AppiumDriver<MobileElement> driver) {
         this.driver = driver;
+        pointUtils = new PointUtils(driver);
     }
 
     public TouchAction tapByCoordinates(int x, int y) {
@@ -28,27 +31,27 @@ public class MobileActions {
     }
 
     public TouchAction horizontalSwipeByPercentage(double startPercentage, double endPercentage, double anchorPercentage) {
-        int anchor = getPoint(anchorPercentage);
-        int startPoint = getPoint(startPercentage);
-        int endPoint = getPoint(endPercentage);
+        int anchor = pointUtils.getPoint(anchorPercentage);
+        int startPoint = pointUtils.getPoint(startPercentage);
+        int endPoint = pointUtils.getPoint(endPercentage);
 
         return getSwipeAction(driver, anchor, startPoint, endPoint, 1000);
     }
 
     public TouchAction verticalSwipeByPercentages(double startPercentage, double endPercentage, double anchorPercentage) {
-        int anchor = getPoint(anchorPercentage);
-        int startPoint = getPoint(startPercentage);
-        int endPoint = getPoint(endPercentage);
+        int anchor = pointUtils.getPoint(anchorPercentage);
+        int startPoint = pointUtils.getPoint(startPercentage);
+        int endPoint = pointUtils.getPoint(endPercentage);
 
         return getSwipeAction(driver, anchor, startPoint, endPoint, 1000);
     }
 
     public TouchAction swipeByElements(MobileElement startElement, MobileElement endElement) {
-        int startX = getXPoint(startElement);
-        int startY = getYPoint(startElement);
+        int startX = pointUtils.getXPoint(startElement);
+        int startY = pointUtils.getYPoint(startElement);
 
-        int endX = getXPoint(endElement);
-        int endY = getYPoint(endElement);
+        int endX = pointUtils.getXPoint(endElement);
+        int endY = pointUtils.getYPoint(endElement);
 
         return getSwipeAction(driver, startX, startY, endX, endY, 1000);
     }
