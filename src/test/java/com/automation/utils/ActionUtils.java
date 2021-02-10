@@ -9,6 +9,7 @@ import io.appium.java_client.touch.offset.PointOption;
 
 import java.time.Duration;
 
+@SuppressWarnings("rawtypes")
 public class ActionUtils {
 
     public static TouchAction getSwipeAction(AppiumDriver<MobileElement> driver, int startX, int startY, int endX, int endY, int milliSeconds) {
