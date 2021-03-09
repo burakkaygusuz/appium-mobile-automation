@@ -23,7 +23,8 @@ public class ServerManager {
                 .withAppiumJS(new File(getJSPath()))
                 .usingPort(4723)
                 .withArgument(GeneralServerFlag.LOCAL_TIMEZONE)
-                .withArgument(GeneralServerFlag.LOG_LEVEL, "info");
+                .withArgument(GeneralServerFlag.LOG_LEVEL, "info")
+                .withArgument(GeneralServerFlag.RELAXED_SECURITY);
 
         HashMap<String, String> environment = new HashMap<>();
         environment.put("PATH", "/usr/local/bin:" + System.getenv("PATH")); //Path to carthage
