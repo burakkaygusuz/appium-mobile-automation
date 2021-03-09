@@ -1,6 +1,7 @@
 package com.automation.server;
 
 import io.appium.java_client.service.local.AppiumDriverLocalService;
+import io.appium.java_client.service.local.AppiumServerHasNotBeenStartedLocallyException;
 import io.appium.java_client.service.local.AppiumServiceBuilder;
 import io.appium.java_client.service.local.flags.GeneralServerFlag;
 
@@ -17,7 +18,7 @@ public class ServerManager {
     private static final AppiumServiceBuilder serviceBuilder = new AppiumServiceBuilder();
     private static AppiumDriverLocalService service;
 
-    public static void startServer() throws IOException, InterruptedException {
+    public static void startServer() throws IOException, InterruptedException, AppiumServerHasNotBeenStartedLocallyException {
         serviceBuilder
                 .usingDriverExecutable(new File(getNodePath()))
                 .withAppiumJS(new File(getJSPath()))
