@@ -1,4 +1,4 @@
-package com.automation.server;
+package com.burakkaygusuz.server;
 
 import io.appium.java_client.service.local.AppiumDriverLocalService;
 import io.appium.java_client.service.local.AppiumServerHasNotBeenStartedLocallyException;
@@ -10,8 +10,8 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.HashMap;
 
-import static com.automation.utils.PathUtils.getJSPath;
-import static com.automation.utils.PathUtils.getNodePath;
+import static com.burakkaygusuz.utils.PathUtils.getJSPath;
+import static com.burakkaygusuz.utils.PathUtils.getNodePath;
 
 public class ServerManager {
 
@@ -22,6 +22,7 @@ public class ServerManager {
         serviceBuilder
                 .usingDriverExecutable(new File(getNodePath()))
                 .withAppiumJS(new File(getJSPath()))
+                .withIPAddress("127.0.0.1")
                 .usingPort(4723)
                 .withArgument(GeneralServerFlag.LOCAL_TIMEZONE)
                 .withArgument(GeneralServerFlag.LOG_LEVEL, "info")
@@ -36,14 +37,14 @@ public class ServerManager {
 
         service = AppiumDriverLocalService.buildService(serviceBuilder);
         service.start();
-        service.clearOutPutStreams();
     }
 
     public static URL getServerAddress() {
         return service.getUrl();
     }
 
-    public static void stopServer() {
+    public static void stopServer() throws IOException {
+        Runtime.getRuntime().exec("adb -e emu kill"); //Shutdown the headless emulator
         service.stop();
     }
 

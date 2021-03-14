@@ -1,6 +1,6 @@
-package com.automation.tests;
+package com.burakkaygusuz.tests;
 
-import com.automation.BaseTest;
+import com.burakkaygusuz.BaseTest;
 import org.testng.annotations.Test;
 
 public class FirstTest extends BaseTest {

@@ -1,11 +1,11 @@
-package com.automation.actions;
+package com.burakkaygusuz.actions;
 
-import com.automation.utils.PointUtils;
+import com.burakkaygusuz.utils.PointUtils;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.TouchAction;
 
-import static com.automation.utils.ActionUtils.*;
+import static com.burakkaygusuz.utils.ActionUtils.*;
 
 @SuppressWarnings("rawtypes")
 public class MobileActions {

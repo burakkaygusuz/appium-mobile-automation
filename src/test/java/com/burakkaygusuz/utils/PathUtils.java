@@ -1,4 +1,4 @@
-package com.automation.utils;
+package com.burakkaygusuz.utils;
 
 import java.io.BufferedReader;
 import java.io.IOException;

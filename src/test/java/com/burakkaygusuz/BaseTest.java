@@ -1,11 +1,10 @@
-package com.automation;
+package com.burakkaygusuz;
 
-import com.automation.config.DriverFactory;
-import com.automation.config.DriverType;
-import com.automation.server.ServerManager;
+import com.burakkaygusuz.config.DriverFactory;
+import com.burakkaygusuz.config.DriverType;
+import com.burakkaygusuz.server.ServerManager;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
-import org.openqa.selenium.remote.DesiredCapabilities;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.testng.annotations.AfterClass;
@@ -16,19 +15,18 @@ import org.testng.annotations.BeforeSuite;
 public class BaseTest {
 
     private static final Logger log = LoggerFactory.getLogger(BaseTest.class);
-    private final DesiredCapabilities capabilities = new DesiredCapabilities();
     protected AppiumDriver<MobileElement> driver;
 
     @BeforeSuite
     public void startAppiumServer() throws Exception {
         ServerManager.startServer();
-        log.info("The appium server is started...");
+        log.info(String.format("The appium server : %s is started...", ServerManager.getServerAddress()));
     }
 
     @BeforeClass
     public void startSession() {
         if (driver == null)
-            driver = DriverFactory.getMobileDriver(DriverType.ANDROID, ServerManager.getServerAddress(), capabilities);
+            driver = DriverFactory.getMobileDriver(DriverType.ANDROID);
     }
 
     @AfterClass
@@ -40,8 +38,9 @@ public class BaseTest {
     }
 
     @AfterSuite(alwaysRun = true)
-    public void stopAppiumServer() {
-        ServerManager.stopServer();
+    public void stopAppiumServer() throws Exception {
+        if (ServerManager.isServiceRunning())
+            ServerManager.stopServer();
         log.info("The appium server is stopped...");
     }
 

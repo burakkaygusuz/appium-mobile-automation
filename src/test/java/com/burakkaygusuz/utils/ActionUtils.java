@@ -1,4 +1,4 @@
-package com.automation.utils;
+package com.burakkaygusuz.utils;
 
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;

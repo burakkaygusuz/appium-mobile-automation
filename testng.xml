@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
-<suite name="appium-java-architecture" verbose="1">
+<suite name="appium-mobile-automation" verbose="1">
     <test name="pages">
         <classes>
-            <class name="com.automation.tests.FirstTest"/>
+            <class name="com.burakkaygusuz.tests.FirstTest"/>
         </classes>
     </test>
 </suite>
