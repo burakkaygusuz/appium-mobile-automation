@@ -57,7 +57,7 @@ public enum DriverType implements DriverOptions {
 
             iosOptions.setPlatformName(MobilePlatform.IOS);
             iosOptions.setAutomationName(AutomationName.IOS_XCUI_TEST);
-            iosOptions.setPlatformName("13");
+            iosOptions.setPlatformVersion("14.4");
             iosOptions.setApp(new File(props.getProperty("IOS_APP_PATH")).getAbsolutePath());
             iosOptions.setDeviceName(props.getProperty("IOS_DEVICE_NAME"));
             iosOptions.setUdid(props.getProperty("IOS_DEVICE_ID"));
