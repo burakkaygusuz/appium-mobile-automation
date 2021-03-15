@@ -1,7 +1,7 @@
 package com.burakkaygusuz;
 
 import com.burakkaygusuz.config.DriverFactory;
-import com.burakkaygusuz.config.DriverType;
+import com.burakkaygusuz.enums.Platforms;
 import com.burakkaygusuz.server.ServerManager;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
@@ -26,7 +26,7 @@ public class BaseTest {
     @BeforeClass
     public void startSession() {
         if (driver == null)
-            driver = DriverFactory.getMobileDriver(DriverType.ANDROID);
+            driver = DriverFactory.getMobileDriver(Platforms.ANDROID);
     }
 
     @AfterClass
