@@ -25,7 +25,7 @@ public class ServerManager {
                 .withIPAddress("127.0.0.1")
                 .usingPort(4723)
                 .withArgument(GeneralServerFlag.LOCAL_TIMEZONE)
-                .withArgument(GeneralServerFlag.LOG_LEVEL, "info")
+                .withArgument(GeneralServerFlag.LOG_LEVEL, "warn")
                 .withArgument(GeneralServerFlag.RELAXED_SECURITY);
 
         HashMap<String, String> environment = new HashMap<>();
