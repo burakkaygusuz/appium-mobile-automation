@@ -1,6 +1,5 @@
 package com.burakkaygusuz;
 
-import com.burakkaygusuz.config.DriverFactory;
 import com.burakkaygusuz.enums.Platforms;
 import com.burakkaygusuz.server.ServerManager;
 import io.appium.java_client.AppiumDriver;
@@ -11,33 +10,36 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.testng.annotations.*;
 
+import static com.burakkaygusuz.config.DriverFactory.getMobileDriver;
+
 public class BaseTest {
 
-    private static final Logger log = LoggerFactory.getLogger(BaseTest.class);
+    private static final Logger logger = LoggerFactory.getLogger(BaseTest.class);
     protected AppiumDriver<MobileElement> driver;
     protected WebDriverWait wait;
 
     @BeforeSuite
     public void startAppiumServer() throws Exception {
         ServerManager.startServer();
-        log.info("The appium server is started...");
+        logger.info("Appium server started");
     }
 
     @BeforeTest
     public void startSession() {
         if (driver == null)
-            driver = DriverFactory.getMobileDriver(Platforms.ANDROID);
+            driver = getMobileDriver(Platforms.ANDROID);
+
         if (wait == null)
             wait = new WebDriverWait(driver, 20);
     }
 
     @BeforeClass
     public void beforeClass() {
-        log.info(String.format("Automation Name  : %s", driver.getAutomationName()));
-        log.info(String.format("Platform         : %s", driver.getPlatformName().toUpperCase()));
-        log.info(String.format("Version          : %s", driver.getCapabilities().getCapability(MobileCapabilityType.PLATFORM_VERSION)));
-        log.info(String.format("Device Name      : %s", driver.getCapabilities().getCapability(MobileCapabilityType.DEVICE_NAME)));
-        log.info(String.format("Remote Address   : %s", driver.getRemoteAddress()));
+        logger.info(String.format("Automation Name  : %s", driver.getAutomationName()));
+        logger.info(String.format("Platform         : %s", driver.getPlatformName().toUpperCase()));
+        logger.info(String.format("Version          : %s", driver.getCapabilities().getCapability(MobileCapabilityType.PLATFORM_VERSION)));
+        logger.info(String.format("Device Name      : %s", driver.getCapabilities().getCapability(MobileCapabilityType.DEVICE_NAME)));
+        logger.info(String.format("Remote Address   : %s", driver.getRemoteAddress()));
     }
 
     @AfterTest
@@ -52,7 +54,7 @@ public class BaseTest {
     public void stopAppiumServer() throws Exception {
         if (ServerManager.isServiceRunning())
             ServerManager.stopServer();
-        log.info("The appium server is stopped...");
+        logger.info("Appium server stopped successfully");
     }
 
 }
