@@ -6,6 +6,7 @@ import com.burakkaygusuz.server.ServerManager;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.remote.MobileCapabilityType;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.testng.annotations.*;
@@ -14,6 +15,7 @@ public class BaseTest {
 
     private static final Logger log = LoggerFactory.getLogger(BaseTest.class);
     protected AppiumDriver<MobileElement> driver;
+    protected WebDriverWait wait;
 
     @BeforeSuite
     public void startAppiumServer() throws Exception {
@@ -25,6 +27,8 @@ public class BaseTest {
     public void startSession() {
         if (driver == null)
             driver = DriverFactory.getMobileDriver(Platforms.ANDROID);
+        if (wait == null)
+            wait = new WebDriverWait(driver, 20);
     }
 
     @BeforeClass
