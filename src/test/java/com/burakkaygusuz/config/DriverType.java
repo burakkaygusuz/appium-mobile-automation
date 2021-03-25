@@ -70,7 +70,7 @@ public enum DriverType {
         }
     };
 
-    private static final Properties props = PropertyUtils.readPropertiesFile("src/test/resources/config.properties");
+    private static final Properties props = PropertyUtils.readPropertiesFile("src/test/resources/app.properties");
 
     public abstract AppiumDriver<MobileElement> getDriver();
     public abstract MobileOptions<?> getOptions();
