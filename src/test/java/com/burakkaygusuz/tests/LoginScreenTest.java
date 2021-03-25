@@ -1,6 +1,5 @@
 package com.burakkaygusuz.tests;
 
-import com.burakkaygusuz.BaseTest;
 import com.burakkaygusuz.screens.LoginScreen;
 import com.burakkaygusuz.screens.MainScreen;
 import io.appium.java_client.MobileBy;

@@ -1,4 +1,4 @@
-package com.burakkaygusuz;
+package com.burakkaygusuz.tests;
 
 import com.burakkaygusuz.enums.Platforms;
 import com.burakkaygusuz.server.ServerManager;
