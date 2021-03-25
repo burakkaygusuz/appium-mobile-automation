@@ -26,6 +26,7 @@
         <appium.version>7.5.0</appium.version>
         <selenium.version>3.141.59</selenium.version>
         <testng.version>7.4.0</testng.version>
+        <assertj-core.version>3.19.0</assertj-core.version>
         <slf4j.version>1.7.30</slf4j.version>
         <!--Plugin Versions-->
         <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
@@ -52,6 +53,12 @@
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
             <version>${testng.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.assertj</groupId>
+            <artifactId>assertj-core</artifactId>
+            <version>${assertj-core.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
