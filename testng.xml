@@ -3,7 +3,7 @@
 <suite name="appium-mobile-automation" verbose="1">
     <test name="pages">
         <classes>
-            <class name="com.burakkaygusuz.tests.FirstTest"/>
+            <class name="com.burakkaygusuz.tests.LoginScreenTest"/>
         </classes>
     </test>
 </suite>
