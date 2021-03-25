@@ -23,7 +23,7 @@
         <maven.source.version>11</maven.source.version>
         <maven.target.version>11</maven.target.version>
         <!--Dependency Versions-->
-        <appium.version>7.5.0</appium.version>
+        <appium.version>7.5.1</appium.version>
         <selenium.version>3.141.59</selenium.version>
         <testng.version>7.4.0</testng.version>
         <assertj-core.version>3.19.0</assertj-core.version>
