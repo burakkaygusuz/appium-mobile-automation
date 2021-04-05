@@ -1,21 +1,22 @@
 package com.burakkaygusuz.utils;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
 public class PathUtils {
 
-    private static final String operatingSystem = System.getProperty("os.name");
+    private static final String OPERATING_SYSTEM = System.getProperty("os.name");
     private static String jsPaths = null;
-    private static String actualJSPath = null;
-    private static String nodePath = null;
     private static Process process;
     private static BufferedReader bufferedReader;
 
-    public static String getNodePath() throws IOException, InterruptedException {
-        if (operatingSystem.contains("Win")) {
-            process = Runtime.getRuntime().exec("where" + " " + "node");
+    public static File getNodeJSPath() throws IOException, InterruptedException {
+        String nodePath = null;
+
+        if (OPERATING_SYSTEM.contains("Win")) {
+            process = Runtime.getRuntime().exec("where node");
             bufferedReader = new BufferedReader(new InputStreamReader(process.getInputStream()));
 
             while ((jsPaths = bufferedReader.readLine()) != null)
@@ -23,7 +24,7 @@ public class PathUtils {
 
             process.waitFor();
         } else {
-            process = Runtime.getRuntime().exec("which" + " " + "node");
+            process = Runtime.getRuntime().exec("which node");
             process.waitFor();
             bufferedReader = new BufferedReader(new InputStreamReader(process.getInputStream()));
 
@@ -32,13 +33,18 @@ public class PathUtils {
                 nodePath = readLine;
         }
         process.destroy();
-        if (nodePath == null) Runtime.getRuntime().exit(0);
-        return nodePath;
+        bufferedReader.close();
+
+        if (nodePath == null)
+            Runtime.getRuntime().exit(0);
+        return new File(nodePath);
     }
 
-    public static String getJSPath() throws IOException, InterruptedException {
-        if (operatingSystem.contains("Win")) {
-            process = Runtime.getRuntime().exec("where" + " " + "appium");
+    public static File getAppiumJSPath() throws IOException, InterruptedException {
+        String actualJSPath = null;
+
+        if (OPERATING_SYSTEM.contains("Win")) {
+            process = Runtime.getRuntime().exec("where appium");
             bufferedReader = new BufferedReader(new InputStreamReader(process.getInputStream()));
 
             while ((jsPaths = bufferedReader.readLine()) != null) {
@@ -47,12 +53,13 @@ public class PathUtils {
             }
             process.waitFor();
             process.destroy();
+            bufferedReader.close();
 
-            if (actualJSPath == null) Runtime.getRuntime().exit(0);
+            if (actualJSPath == null)
+                Runtime.getRuntime().exit(0);
         } else {
             actualJSPath = "/usr/local/lib/node_modules/appium/build/lib/main.js";
         }
-        return actualJSPath;
+        return new File(actualJSPath);
     }
-
 }

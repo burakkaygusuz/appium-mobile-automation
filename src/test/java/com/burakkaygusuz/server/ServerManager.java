@@ -5,23 +5,23 @@ import io.appium.java_client.service.local.AppiumServerHasNotBeenStartedLocallyE
 import io.appium.java_client.service.local.AppiumServiceBuilder;
 import io.appium.java_client.service.local.flags.GeneralServerFlag;
 
-import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.HashMap;
 
-import static com.burakkaygusuz.utils.PathUtils.getJSPath;
-import static com.burakkaygusuz.utils.PathUtils.getNodePath;
+import static com.burakkaygusuz.utils.PathUtils.getAppiumJSPath;
+import static com.burakkaygusuz.utils.PathUtils.getNodeJSPath;
 
 public class ServerManager {
 
-    private static final AppiumServiceBuilder serviceBuilder = new AppiumServiceBuilder();
     private static AppiumDriverLocalService service;
 
     public static void startServer() throws IOException, InterruptedException, AppiumServerHasNotBeenStartedLocallyException {
+        AppiumServiceBuilder serviceBuilder = new AppiumServiceBuilder();
+
         serviceBuilder
-                .usingDriverExecutable(new File(getNodePath()))
-                .withAppiumJS(new File(getJSPath()))
+                .usingDriverExecutable(getNodeJSPath())
+                .withAppiumJS(getAppiumJSPath())
                 .withIPAddress("127.0.0.1")
                 .usingPort(4723)
                 .withArgument(GeneralServerFlag.LOCAL_TIMEZONE)
@@ -44,7 +44,7 @@ public class ServerManager {
     }
 
     public static void stopServer() throws IOException {
-        Runtime.getRuntime().exec("adb -e emu kill"); //Shutdown the headless emulator
+        Runtime.getRuntime().exec("adb -e emu kill"); // kill the headless Android emulator
         service.stop();
     }
 
