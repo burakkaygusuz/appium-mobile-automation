@@ -17,9 +17,9 @@ public class PropertyUtils {
         try (FileInputStream fileInputStream = new FileInputStream(fileName)) {
             properties.load(fileInputStream);
         } catch (FileNotFoundException e) {
-            log.info("File does not exist: " + e.getMessage());
+            log.error(String.format("File does not exist: %s", e.getMessage()));
         } catch (IOException e) {
-            log.info("An error occurred while reading the file: " + e.getMessage());
+            log.error(String.format("An error occurred while reading the file: %s", e.getMessage()));
         }
         return properties;
     }
