@@ -13,7 +13,7 @@ import static com.burakkaygusuz.config.DriverType.IOS;
 
 public class DriverFactory {
 
-    private static final Logger log = LoggerFactory.getLogger(DriverType.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(DriverType.class);
     protected static AppiumDriver<MobileElement> driver;
 
     public static AppiumDriver<MobileElement> getMobileDriver(Platforms platform) {
@@ -31,7 +31,7 @@ public class DriverFactory {
                         throw new UnSupportedPlatformException(String.format("%s is not supported!", platform.toString()));
                 }
             } catch (Exception e) {
-                log.error(String.format("An unexpected error occurred while the appium driver initialized: \n %s", ExceptionUtils.getMessage(e)));
+                LOGGER.error(String.format("An unexpected error occurred while the appium driver initialized: \n %s", ExceptionUtils.getMessage(e)));
             }
         }
         return driver;

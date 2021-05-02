@@ -28,18 +28,18 @@ public enum DriverType {
             androidOptions.setPlatformName(MobilePlatform.ANDROID);
             androidOptions.setAutomationName(AutomationName.ANDROID_UIAUTOMATOR2);
             androidOptions.setPlatformVersion("10");
-            androidOptions.setApp(new File(props.getProperty("android.app.path")).getAbsolutePath());
-            androidOptions.setDeviceName(props.getProperty("android.device.name"));
-            androidOptions.setUdid(props.getProperty("android.device.id"));
+            androidOptions.setApp(new File(PROPS.getProperty("android.app.path")).getAbsolutePath());
+            androidOptions.setDeviceName(PROPS.getProperty("android.device.name"));
+            androidOptions.setUdid(PROPS.getProperty("android.device.id"));
             androidOptions.setNoReset(false);
             androidOptions.setCapability(AndroidMobileCapabilityType.IS_HEADLESS, true);
-            androidOptions.setCapability(AndroidMobileCapabilityType.AVD, props.getProperty("avd.device.name"));
+            androidOptions.setCapability(AndroidMobileCapabilityType.AVD, PROPS.getProperty("avd.device.name"));
             androidOptions.setCapability(AndroidMobileCapabilityType.SKIP_UNLOCK, true);
             androidOptions.setCapability(AndroidMobileCapabilityType.AUTO_GRANT_PERMISSIONS, true);
             androidOptions.setCapability(AndroidMobileCapabilityType.ANDROID_INSTALL_PATH, "/data/local/tmp");
             androidOptions.setCapability(AndroidMobileCapabilityType.ANDROID_INSTALL_TIMEOUT, 100000);
-            androidOptions.setCapability(AndroidMobileCapabilityType.APP_ACTIVITY, props.getProperty("app.activity"));
-            androidOptions.setCapability(AndroidMobileCapabilityType.APP_PACKAGE, props.getProperty("app.package"));
+            androidOptions.setCapability(AndroidMobileCapabilityType.APP_ACTIVITY, PROPS.getProperty("app.activity"));
+            androidOptions.setCapability(AndroidMobileCapabilityType.APP_PACKAGE, PROPS.getProperty("app.package"));
 
             return androidOptions;
         }
@@ -58,11 +58,11 @@ public enum DriverType {
             iosOptions.setPlatformName(MobilePlatform.IOS);
             iosOptions.setAutomationName(AutomationName.IOS_XCUI_TEST);
             iosOptions.setPlatformVersion("14.4");
-            iosOptions.setApp(new File(props.getProperty("ios.app.path")).getAbsolutePath());
-            iosOptions.setDeviceName(props.getProperty("ios.device.name"));
-            iosOptions.setUdid(props.getProperty("ios.device.id"));
+            iosOptions.setApp(new File(PROPS.getProperty("ios.app.path")).getAbsolutePath());
+            iosOptions.setDeviceName(PROPS.getProperty("ios.device.name"));
+            iosOptions.setUdid(PROPS.getProperty("ios.device.id"));
             iosOptions.setNoReset(false);
-            iosOptions.setCapability(IOSMobileCapabilityType.BUNDLE_ID, props.getProperty("bundle.id"));
+            iosOptions.setCapability(IOSMobileCapabilityType.BUNDLE_ID, PROPS.getProperty("bundle.id"));
             iosOptions.setCapability(IOSMobileCapabilityType.LOCATION_SERVICES_ENABLED, true);
             iosOptions.setCapability(IOSMobileCapabilityType.AUTO_ACCEPT_ALERTS, true);
 
@@ -70,7 +70,7 @@ public enum DriverType {
         }
     };
 
-    private static final Properties props = PropertyUtils.readPropertiesFile("src/test/resources/app.properties");
+    private static final Properties PROPS = PropertyUtils.readPropertiesFile("src/test/resources/app.properties");
 
     public abstract AppiumDriver<MobileElement> getDriver();
     public abstract MobileOptions<?> getOptions();
