@@ -19,9 +19,8 @@ public class BaseTest {
     protected WebDriverWait wait;
 
     @BeforeSuite
-    public void startAppiumServer() throws Exception {
+    public void startAppiumServer() {
         ServerManager.startServer();
-        LOGGER.info("Appium server started");
     }
 
     @BeforeTest
@@ -51,10 +50,9 @@ public class BaseTest {
     }
 
     @AfterSuite(alwaysRun = true)
-    public void stopAppiumServer() throws Exception {
+    public void stopAppiumServer() {
         if (ServerManager.isServiceRunning())
             ServerManager.stopServer();
-        LOGGER.info("Appium server stopped successfully");
     }
 
 }
