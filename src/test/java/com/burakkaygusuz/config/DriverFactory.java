@@ -28,7 +28,7 @@ public class DriverFactory {
                         driver = IOS.getDriver();
                         break;
                     default:
-                        throw new UnSupportedPlatformException(String.format("%s is not supported!", platform.toString()));
+                        throw new UnSupportedPlatformException(String.format("%s is not supported!", platform));
                 }
             } catch (Exception e) {
                 LOGGER.error(String.format("An unexpected error occurred while the appium driver initialized: \n %s", ExceptionUtils.getMessage(e)));
