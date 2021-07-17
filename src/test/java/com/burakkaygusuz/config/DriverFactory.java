@@ -13,7 +13,7 @@ import static com.burakkaygusuz.config.DriverType.IOS;
 
 public class DriverFactory {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(DriverType.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(DriverFactory.class);
     protected static AppiumDriver<MobileElement> driver;
 
     public static AppiumDriver<MobileElement> getMobileDriver(Platforms platform) {
